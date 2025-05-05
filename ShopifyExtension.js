@@ -66,14 +66,14 @@ export const VariantSelectionForm = {
                 }
                 button {
                     cursor: pointer;
-                    background-color: #447f76;
+                    background-color: #b26851;
                     color: white;
                     border: none;
                     font-weight: bold;
                     transition: background-color 0.2s ease;
                 }
                 button:hover {
-                    background-color: #376b62;
+                    background-color: #945a44;
                 }
                 .price {
                     font-weight: bold;

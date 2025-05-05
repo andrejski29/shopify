@@ -164,8 +164,9 @@ export const VariantSelectionForm = {
         const bt_submit = payloadObj.bt_submit || 'Create Return';
 
         // ✅ Mapping display labels to formatted values
-        const language = (trace.payload.agentLanguage || 'fr-FR').startsWith('fr') ? 'fr' : 'en';
-
+        const agentLang = trace.payload.agentLanguage || 'fr'; // default fallback
+        const language = agentLang.startsWith('fr') ? 'fr' : 'en';
+        
         const returnReasonsMap = {
               en: {
                 'Allergic reaction': 'ALLERGY',

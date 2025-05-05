@@ -189,6 +189,7 @@ export const VariantSelectionForm = {
             };
 
         const returnReasons = returnReasonsMap[language];
+        const selectPlaceholder = language === 'fr' ? 'Sélectionnez une raison' : 'Select a reason';
 
         // Create form container
         const formContainer = document.createElement('form');
@@ -229,14 +230,14 @@ export const VariantSelectionForm = {
                 }
                 button {
                     cursor: pointer;
-                    background-color: #447f76;
+                    background-color: #b26851;
                     color: white;
                     border: none;
                     font-weight: bold;
                     transition: background-color 0.2s ease;
                 }
                 button:hover {
-                    background-color: #376b62;
+                    background-color: #b26851;
                 }
             </style>
 
@@ -255,7 +256,7 @@ export const VariantSelectionForm = {
 
                 <label for="reason">${lb_reason}:</label>
                 <select id="reason" required>
-                    <option value="" disabled selected>Select a reason</option>
+                    <option value="" disabled selected>${selectPlaceholder}</option>
                     ${Object.entries(returnReasons).map(([label, value]) => `
                       <option value="${value}">${label}</option>
                     `).join('')}

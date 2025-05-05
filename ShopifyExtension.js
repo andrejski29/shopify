@@ -164,17 +164,30 @@ export const VariantSelectionForm = {
         const bt_submit = payloadObj.bt_submit || 'Create Return';
 
         // ✅ Mapping display labels to formatted values
-        const returnReasons = {
-            'Color': 'COLOR',
-            'Defective': 'DEFECTIVE',
-            'Not as Described': 'NOT_AS_DESCRIBED',
-            'Other': 'OTHER',
-            'Size Too Large': 'SIZE_TOO_LARGE',
-            'Size Too Small': 'SIZE_TOO_SMALL',
-            'Style': 'STYLE',
-            'Unwanted': 'UNWANTED',
-            'Wrong Item': 'WRONG_ITEM'
-        };
+        const language = (trace.payload.agentLanguage || 'fr-FR').startsWith('fr') ? 'fr' : 'en';
+
+        const returnReasonsMap = {
+              en: {
+                'Allergic reaction': 'ALLERGY',
+                'Damaged packaging': 'DAMAGED_PACKAGING',
+                'Wrong shade': 'WRONG_SHADE',
+                'Texture or scent issue': 'TEXTURE_SCENT',
+                'Item arrived late': 'LATE_DELIVERY',
+                'Changed my mind': 'UNWANTED',
+                'Other': 'OTHER'
+              },
+              fr: {
+                'Réaction allergique': 'ALLERGY',
+                'Emballage endommagé': 'DAMAGED_PACKAGING',
+                'Mauvaise teinte': 'WRONG_SHADE',
+                'Problème de texture ou d’odeur': 'TEXTURE_SCENT',
+                'Article arrivé en retard': 'LATE_DELIVERY',
+                'Changé d’avis': 'UNWANTED',
+                'Autre': 'OTHER'
+              }
+            };
+
+        const returnReasons = returnReasonsMap[language];
 
         // Create form container
         const formContainer = document.createElement('form');
@@ -242,8 +255,8 @@ export const VariantSelectionForm = {
                 <label for="reason">${lb_reason}:</label>
                 <select id="reason" required>
                     <option value="" disabled selected>Select a reason</option>
-                    ${Object.keys(returnReasons).map(reason => `
-                        <option value="${returnReasons[reason]}">${reason}</option>
+                    ${Object.entries(returnReasons).map(([label, value]) => `
+                      <option value="${value}">${label}</option>
                     `).join('')}
                 </select>
 

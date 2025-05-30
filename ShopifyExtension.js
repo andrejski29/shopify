@@ -159,15 +159,16 @@ export const VariantSelectionForm = {
 
         // Extract payload data dynamically
         const orderedQuantity = payloadObj.orderedQuantity || '1'; // Default to 1
-        const lb_quantity = payloadObj.lb_quantity || 'Quantity';
-        const lb_reason = payloadObj.lb_reason || 'Return Reason';
-        const bt_submit = payloadObj.bt_submit || 'Create Return';
+        const lb_quantity = payloadObj.lb_quantity || 'Quantité';
+        const lb_reason = payloadObj.lb_reason || 'Raison du retour';
+        const bt_submit = payloadObj.bt_submit || 'Créer un retour';
 
         // ✅ Mapping display labels to formatted values
-        const agentLang = trace.payload.agentLanguage || 'fr'; // default fallback
+        const agentLang = (payloadObj.agentLanguage || 'fr').toLowerCase();
         const language = agentLang.startsWith('fr') ? 'fr' : 'en';
-        
-        const returnReasonsMap = {
+        console.log('DEBUG agentLanguage:', agentLang, '→', language);
+            
+           const REASONS = {
               en: {
                 'Allergic reaction': 'ALLERGY',
                 'Damaged packaging': 'DAMAGED_PACKAGING',
@@ -188,8 +189,19 @@ export const VariantSelectionForm = {
               }
             };
 
-        const returnReasons = returnReasonsMap[language];
-        const selectPlaceholder = language === 'fr' ? 'Sélectionnez une raison' : 'Select a reason';
+            const selectPlaceholder = {
+              en: 'Select a reason',
+              fr: 'Sélectionnez une raison'
+            }[language];
+
+         const returnReasons = REASONS[language];
+
+        const reasonOptions = [
+          { label: selectPlaceholder, value: '', disabled: true, hidden: true },
+          ...Object.entries(returnReasons).map(([label, code]) => ({
+            label, value: code, disabled: false, hidden: false
+          }))
+        ];
 
         // Create form container
         const formContainer = document.createElement('form');

@@ -45,12 +45,12 @@ export const VariantSelectionForm = {
                     border-radius: 8px;
                     background: #f9f9f9;
                     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                    max-width: 300px;
+                    max-width: 320px;
                     margin: auto;
                 }
                 select, input, button {
-                    padding: 12px;
-                    font-size: 16px;
+                    padding: 10px 14px;
+                    font-size: 15px;
                     border: 1px solid #ccc;
                     border-radius: 6px;
                     width: 100%;
@@ -69,14 +69,14 @@ export const VariantSelectionForm = {
                     background-color: #b26851;
                     color: white;
                     border: none;
-                    font-weight: bold;
+                    font-weight: 600;
                     transition: background-color 0.2s ease;
                 }
                 button:hover {
                     background-color: #945a44;
                 }
                 .price {
-                    font-weight: bold;
+                    font-weight: 600;
                     font-size: 18px;
                     color: #333;
                     text-align: center;

@@ -40,11 +40,11 @@ export const VariantSelectionForm = {
                 .simple-form {
                     display: flex;
                     flex-direction: column;
-                    gap: 15px;
-                    padding: 20px;
-                    border-radius: 8px;
+                    gap: 12px;
+                    padding: 16px;
+                    border-radius: 12px;
                     background: #f9f9f9;
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                     max-width: 320px;
                     margin: auto;
                 }
@@ -52,14 +52,14 @@ export const VariantSelectionForm = {
                     padding: 10px 14px;
                     font-size: 15px;
                     border: 1px solid #ccc;
-                    border-radius: 6px;
+                    border-radius: 8px;
                     width: 100%;
                     outline: none;
                     transition: all 0.3s ease;
                 }
                 select:focus, input:focus {
                     border-color: #447f76;
-                    box-shadow: 0 0 8px rgba(68, 127, 118, 0.3);
+                    box-shadow: 0 0 6px rgba(68, 127, 118, 0.3);
                 }
                 input[type="number"] {
                     text-align: center;
@@ -77,7 +77,7 @@ export const VariantSelectionForm = {
                 }
                 .price {
                     font-weight: 600;
-                    font-size: 18px;
+                    font-size: 17px;
                     color: #333;
                     text-align: center;
                 }

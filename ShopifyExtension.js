@@ -166,8 +166,7 @@ export const VariantSelectionForm = {
         // ✅ Mapping display labels to formatted values
         const agentLang = (payloadObj.agentLanguage || 'fr').toLowerCase();
         const language = agentLang.startsWith('fr') ? 'fr' : 'en';
-        console.log('DEBUG agentLanguage:', agentLang, '→', language);
-            
+        
            const REASONS = {
               en: {
                 'Allergic reaction': 'ALLERGY',
@@ -189,19 +188,12 @@ export const VariantSelectionForm = {
               }
             };
 
+            const returnReasons = REASONS[language];
             const selectPlaceholder = {
               en: 'Select a reason',
               fr: 'Sélectionnez une raison'
             }[language];
-
-         const returnReasons = REASONS[language];
-
-        const reasonOptions = [
-          { label: selectPlaceholder, value: '', disabled: true, hidden: true },
-          ...Object.entries(returnReasons).map(([label, code]) => ({
-            label, value: code, disabled: false, hidden: false
-          }))
-        ];
+        
 
         // Create form container
         const formContainer = document.createElement('form');
